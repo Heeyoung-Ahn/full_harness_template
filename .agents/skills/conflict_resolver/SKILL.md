@@ -5,7 +5,7 @@ description: 멀티 Agent 환경에서 문서와 코드 충돌이 났을 때 현
 
 # Conflict Resolver Skill
 
-멀티 IDE, 멀티 Agent 환경에서 충돌이 발생했을 때, 불필요한 전체 문서 재로드 없이 현재 상태와 관련 범위만 확인해 안전하게 복구하기 위한 절차입니다.
+Codex main agent와 Codex sub-agent가 병렬 작업하는 환경에서 충돌이 발생했을 때, 불필요한 전체 문서 재로드 없이 현재 상태와 관련 범위만 확인해 안전하게 복구하기 위한 절차입니다.
 
 > 이 스킬은 충돌을 "해결"하는 절차이며, 예방 규칙은 `workspace.md`의 `Pre-Write Refresh`, `Active Locks`, `Stale Lock Recovery`를 따릅니다.
 
@@ -47,6 +47,6 @@ description: 멀티 Agent 환경에서 문서와 코드 충돌이 났을 때 현
 
 ### 5단계: 해결 기록과 복구 handoff
 - 정상 상태를 확인한 뒤 `CURRENT_STATE.md`, `TASK_LIST.md`, 필요 시 `HANDOFF_ARCHIVE.md`를 갱신합니다.
-- `## Handoff Log`에는 `[RECOVERY / 현재 플랫폼/Agent]` 또는 `[CONFLICT / 현재 플랫폼/Agent]` 태그를 포함해 해결 결과를 기록합니다.
+- `## Handoff Log`에는 `[RECOVERY / Codex / session-name]` 또는 `[CONFLICT / Codex / session-name]` 태그를 포함해 해결 결과를 기록합니다.
 - 복구 handoff 직전 `python scripts/check_artifact_schema.py`, `python scripts/check_current_state_sync.py`, `python scripts/check_handoff_limits.py`를 실행합니다.
 - 검사 실패 시 복구가 끝난 것이 아니라는 뜻이므로 handoff 대신 추가 복구 또는 사용자 판단 요청으로 되돌립니다.

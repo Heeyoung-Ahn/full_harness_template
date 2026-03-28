@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 from harness_utils import (
     ARCHITECTURE_PATH,
@@ -87,6 +87,14 @@ def main() -> int:
 
     for lock in active_locks:
         task_id = lock["task_id"]
+        if lock.get("agent") != "Codex":
+            failures.append(f"TASK_LIST.md active lock {task_id} must set Agent to 'Codex'.")
+        if not lock.get("session"):
+            failures.append(f"TASK_LIST.md active lock {task_id} must include a Session value.")
+        if not lock.get("branch"):
+            failures.append(f"TASK_LIST.md active lock {task_id} must include a Branch value.")
+        if not lock.get("worktree"):
+            failures.append(f"TASK_LIST.md active lock {task_id} must include a Worktree value.")
         if task_id not in current_body:
             failures.append(f"CURRENT_STATE.md must reference active lock task {task_id}.")
 
@@ -95,3 +103,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+

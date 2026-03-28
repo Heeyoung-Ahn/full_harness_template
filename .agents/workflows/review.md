@@ -31,6 +31,7 @@ description: 리뷰어 및 보안 검증(Reviewer) 에이전트 워크플로우
 ### Step 4: Handoff
 - 갱신 직전에 `pre-write refresh`를 수행합니다.
 - `TASK_LIST.md` 상태를 갱신합니다.
+- Codex sub-agent를 썼다면 review 결과를 남기는 세션 이름을 handoff에 그대로 적습니다.
 - `CURRENT_STATE.md`의 `Snapshot`, `Next Recommended Agent`, `Must Read Next`, `Active Scope`, `Task Pointers`, `Open Decisions / Blockers`, `Latest Handoff Summary`를 갱신합니다.
 - archive 전에 재작업 필요 항목, 배포 차단 요소, 사용자 결정이 필요한 구조 이슈를 `TASK_LIST.md > ## Blockers`와 `CURRENT_STATE.md > Open Decisions / Blockers`로 승격합니다.
 - handoff 직전 `python scripts/check_artifact_schema.py`, `python scripts/check_current_state_sync.py`, `python scripts/check_handoff_limits.py`를 실행합니다.

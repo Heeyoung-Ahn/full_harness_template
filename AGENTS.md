@@ -5,7 +5,8 @@
 - 시작할 때 가장 먼저 [`.agents/rules/workspace.md`](.agents/rules/workspace.md)를 읽습니다.
 - 그다음 바로 [`.agents/artifacts/CURRENT_STATE.md`](.agents/artifacts/CURRENT_STATE.md)를 읽습니다.
 - 추가 문서는 `CURRENT_STATE.md > Must Read Next`에 적힌 것만 읽습니다.
+- `CURRENT_STATE.md`가 아직 template bootstrap 상태면 바로 [PROJECT_START_CHECKLIST.md](PROJECT_START_CHECKLIST.md)로 이동합니다.
 
-독립 템플릿으로 복제해서 쓰는 절차는 [README.md](README.md)에 정리되어 있습니다.
+독립 템플릿으로 복제해서 쓰는 절차와 Codex 기준 운영 방식은 [README.md](README.md)에 정리되어 있습니다.
 
 `PROJECT_WORKFLOW_MANUAL.md`와 `.agents/artifacts/HANDOFF_ARCHIVE.md`는 기본 진입 문서가 아닙니다. 사람 설명이 필요하거나, 충돌 복구 / closeout / 회고가 필요할 때만 선택적으로 읽습니다.

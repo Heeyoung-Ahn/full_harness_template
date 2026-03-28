@@ -16,14 +16,16 @@
 Python 확인:
 
 ```powershell
-& "C:\Users\ahyne\AppData\Local\Programs\Python\Launcher\py.exe" --version
+python --version
 ```
 
-짧게 되면:
+Windows fallback:
 
 ```powershell
 py --version
 ```
+
+위 둘 다 안 되면 로컬 interpreter 절대 경로를 직접 써도 되지만, 템플릿 기본 문서는 `python` 예시를 기준으로 유지합니다.
 
 ## 2. 가장 먼저 읽을 문서
 
@@ -88,6 +90,7 @@ py --version
 - [ ] `active_task_count: 0`
 - [ ] `handoff_entry_count: 0`
 - [ ] `last_compacted_at: ""`
+- [ ] 첫 real lock row부터 `Agent=Codex`, `Session`, `Branch`, `Worktree` 값을 함께 적는다.
 
 ## 5. 본문에서 바로 채워야 하는 최소 항목
 
@@ -132,6 +135,7 @@ py --version
 - [ ] 현재 프로젝트에 맞는 첫 Planner task 추가
 - [ ] DEV/TST/REV 예시 placeholder는 실제 프로젝트 시작 전에 교체하거나 삭제
 - [ ] 개발/테스트/리뷰 task에는 반드시 `Scope`를 적기
+- [ ] Codex sub-agent를 쓸 계획이면 lock row에 `Session`, `Branch`, `Worktree`를 빠뜨리지 않기
 
 ## 6. 첫 검증 명령
 
@@ -140,7 +144,7 @@ py --version
 이 단계에서는 strict gate가 아직 다 통과할 필요는 없습니다.
 
 ```powershell
-& "C:\Users\ahyne\AppData\Local\Programs\Python\Launcher\py.exe" scripts\check_artifact_schema.py
+python scripts\check_artifact_schema.py
 ```
 
 기대 결과:
@@ -151,7 +155,7 @@ py --version
 ### Planner 문서를 다듬는 동안
 
 ```powershell
-& "C:\Users\ahyne\AppData\Local\Programs\Python\Launcher\py.exe" scripts\check_planner_gate.py
+python scripts\check_planner_gate.py
 ```
 
 기대 결과:
@@ -162,8 +166,8 @@ py --version
 ### Developer handoff 직전
 
 ```powershell
-& "C:\Users\ahyne\AppData\Local\Programs\Python\Launcher\py.exe" scripts\run_harness_checks.py --phase planner
-& "C:\Users\ahyne\AppData\Local\Programs\Python\Launcher\py.exe" scripts\run_harness_checks.py --phase handoff
+python scripts\run_harness_checks.py --phase planner
+python scripts\run_harness_checks.py --phase handoff
 ```
 
 기대 결과:

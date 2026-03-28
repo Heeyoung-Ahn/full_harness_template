@@ -24,7 +24,7 @@ description: 개발자(Developer) 에이전트 워크플로우
 - Scope가 디렉터리 단위로 겹치면 worktree 사용을 우선 검토합니다.
 - `git status`, `git diff`, 최근 변경 파일을 확인합니다.
 - `TASK_LIST.md`, `CURRENT_STATE.md`, 관련 대상 파일에 대해 `pre-write refresh`를 수행한 뒤 lock을 잡습니다.
-- 해당 태스크 상태를 `[-]`로 변경하고 `## Active Locks`에 본인 row를 추가합니다.
+- 해당 태스크 상태를 `[-]`로 변경하고 `## Active Locks`에 `Agent=Codex`, `Session`, `Branch`, `Worktree`를 포함한 본인 row를 추가합니다.
 
 ### Step 3: 구현
 - `ARCHITECTURE_GUIDE.md`의 승인된 경계 안에서만 코드를 수정합니다.

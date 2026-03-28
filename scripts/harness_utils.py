@@ -306,13 +306,31 @@ def parse_active_locks(body: str) -> list[dict[str, str]]:
     rows = parse_markdown_table(extract_section(body, "Active Locks"))
     parsed_rows: list[dict[str, str]] = []
     for row in rows:
+        if len(row) >= 9:
+            parsed_rows.append(
+                {
+                    "task_id": row[0],
+                    "agent": row[1],
+                    "role": row[2],
+                    "session": row[3],
+                    "branch": row[4],
+                    "worktree": row[5],
+                    "started_at": row[6],
+                    "scope": row[7],
+                    "note": row[8],
+                }
+            )
+            continue
         if len(row) < 6:
             continue
         parsed_rows.append(
             {
                 "task_id": row[0],
-                "owner": row[1],
+                "agent": row[1],
                 "role": row[2],
+                "session": "",
+                "branch": "",
+                "worktree": "",
                 "started_at": row[3],
                 "scope": row[4],
                 "note": row[5],
@@ -395,4 +413,5 @@ def print_failures(script_name: str, failures: list[str]) -> int:
     for failure in failures:
         print(f"- {failure}")
     return 1
+
 

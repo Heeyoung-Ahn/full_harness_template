@@ -28,4 +28,6 @@ description: 디자이너(Designer) 에이전트 워크플로우
 - `UI_DESIGN.md` 상단 요약과 상세 설계를 함께 갱신합니다.
 - `CURRENT_STATE.md`의 `Snapshot`, `Next Recommended Agent`, `Must Read Next`, `Active Scope`, `Task Pointers`, `Open Decisions / Blockers`, `Latest Handoff Summary`를 갱신합니다.
 - `TASK_LIST.md`에는 relevant scope와 blocker를 반영합니다.
+- handoff 직전 `python scripts/check_artifact_schema.py`, `python scripts/check_current_state_sync.py`, `python scripts/check_handoff_limits.py`를 실행합니다.
+- 검사 실패 시 handoff를 멈추고 문서 정합성을 복구합니다.
 - `## Handoff Log`에 표준 양식으로 기록합니다.

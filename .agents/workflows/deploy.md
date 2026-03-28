@@ -29,6 +29,7 @@ description: 인프라 및 배포(DevOps) 에이전트 워크플로우
 ### Step 4: 배포 리포트와 Handoff
 - `DEPLOYMENT_PLAN.md`, `TASK_LIST.md`, `CURRENT_STATE.md`를 갱신하기 직전에 `pre-write refresh`를 수행합니다.
 - 배포 결과와 롤백 여부를 기록합니다.
+- Codex sub-agent를 썼다면 배포를 실행한 `Session`, `Branch`, `Worktree` 정보를 lock/handoff에 맞춰 적습니다.
 - `CURRENT_STATE.md`의 `Snapshot`, `Next Recommended Agent`, `Must Read Next`, `Active Scope`, `Task Pointers`, `Open Decisions / Blockers`, `Latest Handoff Summary`를 갱신합니다.
 - archive 전에 배포 후 주의사항, 남은 운영 이슈, 사용자 결정이 필요한 항목을 `TASK_LIST.md > ## Blockers`와 `CURRENT_STATE.md > Open Decisions / Blockers`로 승격합니다.
 - handoff 직전 `python scripts/check_artifact_schema.py`, `python scripts/check_current_state_sync.py`, `python scripts/check_handoff_limits.py`를 실행합니다.

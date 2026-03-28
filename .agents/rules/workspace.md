@@ -13,6 +13,7 @@ trigger: always_on
 4. `CURRENT_STATE.md > Must Read Next`에 적힌 문서만 추가로 읽기
 
 추가 규칙:
+- `CURRENT_STATE.md`가 template bootstrap 상태이거나 frontmatter `template_mode: true`면 Planner는 곧바로 `PROJECT_START_CHECKLIST.md`를 읽습니다.
 - `PROJECT_WORKFLOW_MANUAL.md`는 사람 설명이 필요할 때만 선택적으로 읽습니다.
 - `HANDOFF_ARCHIVE.md`는 충돌 복구, version closeout, 회고가 필요할 때만 읽습니다.
 - `Must Read Next`는 `TASK_LIST.md > ## Active Locks` 확인을 대체하지 않습니다.
@@ -24,6 +25,7 @@ trigger: always_on
 - 실제 프로젝트 상태의 단일 진실 공급원은 `.agents/artifacts/` 아래 물리 문서입니다.
 - `CURRENT_STATE.md`는 기본 진입 요약이지만 계약 문서 자체를 대체하지 않습니다.
 - 역할별 workflow, skill, manual은 이 파일을 보조 설명하거나 적용하는 문서입니다. 새 규칙을 독립적으로 만들면 안 됩니다.
+- 이 저장소의 기본 운영 모델은 `Codex main agent + Codex sub-agent + 필요 시 git worktree`입니다.
 
 ## 3. Context Cap Rules
 - 기본 전략은 `작은 요약층 -> 역할별 필수 문서 -> 필요 시 상세 확장`입니다.
@@ -49,6 +51,7 @@ trigger: always_on
 ### Mechanical Enforcement
 - 핵심 아티팩트는 YAML frontmatter 메타데이터를 유지합니다. 정본 본문은 그대로 두고, 자동 검사는 frontmatter와 고정 heading을 함께 확인합니다.
 - `template_mode: true`는 아직 이 저장소가 skeleton 상태라는 뜻입니다. 실제 프로젝트를 시작하면 Planner가 관련 아티팩트의 `template_mode`를 `false`로 바꾸고 상태 값을 실제 값으로 채운 뒤 strict 검사를 통과시켜야 합니다.
+- 기본 명령 예시는 `python` 기준입니다. Windows에서 `python`이 PATH에 없으면 `py` 또는 로컬 interpreter 경로로 같은 명령을 실행할 수 있습니다.
 - handoff 직전 검사 명령:
   - `python scripts/check_artifact_schema.py`
   - `python scripts/check_current_state_sync.py`
@@ -125,6 +128,7 @@ Planner handoff 금지 예시:
   - `TASK_LIST.md > ## Active Locks`
   - `TASK_LIST.md`의 본인 관련 Task ID와 최신 relevant handoff
   - `git status`, `git diff`, 최근 변경 파일
+- Codex sub-agent를 병렬로 쓸 때는 각 세션에 고유 `Session` 이름을 붙여 lock과 handoff에 함께 남깁니다.
 - 다른 Agent가 lock 중인 Task ID는 잠금 해제 또는 사용자 지시 없이 건드리지 않습니다.
 - 태스크 상태와 점유권을 분리해 기록합니다.
 - `## Active Locks`는 협업용 문서 lock이며 atomic lock이 아닙니다.
@@ -161,7 +165,7 @@ stale lock 회수 절차:
 3. 하나라도 모호하면 자동 회수를 멈추고 `CURRENT_STATE.md > Open Decisions / Blockers`와 `TASK_LIST.md > ## Blockers`에 `Needs User Decision`으로 올린다.
 4. 자동 회수가 안전한 경우에만 `CURRENT_STATE.md`의 `Open Decisions / Blockers`, `Active Scope`, `Task Pointers`를 갱신한다.
 5. `TASK_LIST.md > ## Active Locks`에서 stale row를 정리한다.
-6. `## Handoff Log`에 `### [YYYY-MM-DD HH:MM] [STALE-LOCK / 현재 플랫폼/Agent] -> [다음 Agent]` 형식으로 기록한다.
+6. `## Handoff Log`에 `### [YYYY-MM-DD HH:MM] [STALE-LOCK / Codex / session-name] -> [다음 Agent]` 형식으로 기록한다.
 7. 사용자에게 stale lock 회수 사실과 근거를 알린다.
 
 ## 7. Security and Language Rules
@@ -202,9 +206,9 @@ handoff에는 bare phase number보다 `stage name + Task ID`를 우선해서 적
 `## Active Locks` 예시:
 ```md
 ## Active Locks
-| Task ID | Owner | Role | Started At | Scope | Note |
-|---|---|---|---|---|---|
-| DEV-01 | Codex | Developer | 2026-03-28 10:30 | src/auth/* | login validation fix |
+| Task ID | Agent | Role | Session | Branch | Worktree | Started At | Scope | Note |
+|---|---|---|---|---|---|---|---|---|
+| DEV-01 | Codex | Developer | dev-main | codex/login-fix | same workspace | 2026-03-28 10:30 | src/auth/* | login validation fix |
 ```
 
 ## 11. Handoff Protocol
@@ -216,7 +220,7 @@ handoff에는 bare phase number보다 `stage name + Task ID`를 우선해서 적
 6. `TASK_LIST.md > ## Handoff Log`에 아래 형식으로 항목을 추가합니다.
 
 ```markdown
-### [YYYY-MM-DD HH:MM] [현재 플랫폼/Agent] -> [다음 Agent]
+### [YYYY-MM-DD HH:MM] [Codex / Planner / main] -> [다음 Agent]
 - **Completed:** [이번 턴에 수행한 내용 요약 — 한국어, 평이한 언어]
 - **Next:** [다음 에이전트가 해야 할 구체적인 작업 — 한국어]
 - **Notes:** [블로커 유무, 참고 사항 — 한국어]
@@ -225,5 +229,5 @@ handoff에는 bare phase number보다 `stage name + Task ID`를 우선해서 적
 추가 규칙:
 - 새 항목은 항상 맨 아래에 추가합니다.
 - `- **Completed:**`, `- **Next:**`, `- **Notes:**` 키워드는 절대 번역하거나 변형하지 않습니다.
-- 충돌, stale lock, recovery 같은 특수 상황은 `[CONFLICT / ...]`, `[STALE-LOCK / ...]`, `[RECOVERY / ...]` 식으로 현재 플랫폼/Agent 칸에 태그를 포함해 기록할 수 있습니다.
+- 충돌, stale lock, recovery 같은 특수 상황은 `[CONFLICT / Codex / session-name]`, `[STALE-LOCK / Codex / session-name]`, `[RECOVERY / Codex / session-name]` 식으로 세션 식별자를 포함해 기록할 수 있습니다.
 - 완료 후 사용자에게 다음 역할과 필요한 후속 호출을 알립니다.

@@ -31,6 +31,7 @@ description: 테스터/QA(Tester) 에이전트 워크플로우
 ### Step 4: Handoff
 - 기록 직전에 `CURRENT_STATE.md`, `TASK_LIST.md`, `WALKTHROUGH.md`에 대해 `pre-write refresh`를 수행합니다.
 - `TASK_LIST.md` 상태를 업데이트합니다.
+- Codex sub-agent를 썼다면 lock과 handoff에 같은 `Session` 이름을 유지합니다.
 - `CURRENT_STATE.md`의 `Snapshot`, `Next Recommended Agent`, `Must Read Next`, `Active Scope`, `Task Pointers`, `Open Decisions / Blockers`, `Latest Handoff Summary`를 갱신합니다.
 - archive 전에 미해결 불일치, 릴리즈 차단 요소, 다음 Agent가 꼭 알아야 할 제약을 `TASK_LIST.md > ## Blockers`와 `CURRENT_STATE.md > Open Decisions / Blockers`로 승격합니다.
 - handoff 직전 `python scripts/check_artifact_schema.py`, `python scripts/check_current_state_sync.py`, `python scripts/check_handoff_limits.py`를 실행합니다.

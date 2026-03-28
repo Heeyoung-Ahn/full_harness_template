@@ -26,20 +26,22 @@ last_compacted_at: ""
 - archive 전에 아직 열린 사용자 질문, 기술 블로커, 다음 Agent가 꼭 알아야 할 제약은 `## Blockers`와 `CURRENT_STATE.md > Open Decisions / Blockers`로 승격합니다.
 - `CURRENT_STATE.md`와 `TASK_LIST.md`의 현재 stage, active scope, next owner 정보는 서로 어긋나면 안 됩니다.
 - `## Active Locks`는 협업용 문서 lock이며 원자적 잠금이 아닙니다. 여러 AI를 동시에 쓸 때는 서로 다른 Task ID와 Scope를 먼저 배정하는 것을 기본 전제로 합니다.
+- Codex-only 기본값: lock row는 `Agent=Codex`, `Session`, `Branch`, `Worktree`, `Started At`, `Scope`, `Note`를 함께 적습니다.
+- `template_mode: true`일 때 아래 DEV/TST/REV/REL/DOC 예시 row는 설명용입니다. Planner가 실제 Task ID로 교체하기 전에는 점유하지 않습니다.
 
 ## Current Release Target
 - Version / Milestone:
-- Current Stage:
-- Current Focus:
-- Current Release Goal:
+- Current Stage: Planning and Architecture
+- Current Focus: Bootstrap this template into a real Codex project
+- Current Release Goal: First planner-ready artifact set
 
 ## Next Version Backlog
 - [ ] BACKLOG-01 [다음 버전 후보 작업] — Scope: [제품/문서/기술 부채]
 
 ## Active Locks
 
-| Task ID | Owner | Role | Started At | Scope | Note |
-|---|---|---|---|---|---|
+| Task ID | Agent | Role | Session | Branch | Worktree | Started At | Scope | Note |
+|---|---|---|---|---|---|---|---|---|
 
 ## Workflow Stage: Planning and Architecture
 - [ ] PLN-01 요구사항 초안 정리 — Scope: `REQUIREMENTS.md`
@@ -56,27 +58,27 @@ last_compacted_at: ""
 ## Workflow Stage: Development and Test Loop
 
 ### Iteration 1
-- [ ] DEV-01 [개발 작업] — Scope: [폴더/모듈/문서]
-- [ ] DEV-02 [개발 작업] — Scope: [폴더/모듈/문서]
-- [ ] TST-01 [검증 작업] — Scope: [대상 Task ID / 경로 / 요구사항]
+- [ ] DEV-EXAMPLE-01 [개발 작업] — Scope: [폴더/모듈/문서]
+- [ ] DEV-EXAMPLE-02 [개발 작업] — Scope: [폴더/모듈/문서]
+- [ ] TST-EXAMPLE-01 [검증 작업] — Scope: [대상 Task ID / 경로 / 요구사항]
 
 ### Iteration 2
-- [ ] DEV-03 [개발 작업] — Scope: [폴더/모듈/문서]
-- [ ] DEV-04 [개발 작업] — Scope: [폴더/모듈/문서]
-- [ ] TST-02 [검증 작업] — Scope: [대상 Task ID / 경로 / 요구사항]
+- [ ] DEV-EXAMPLE-03 [개발 작업] — Scope: [폴더/모듈/문서]
+- [ ] DEV-EXAMPLE-04 [개발 작업] — Scope: [폴더/모듈/문서]
+- [ ] TST-EXAMPLE-02 [검증 작업] — Scope: [대상 Task ID / 경로 / 요구사항]
 
 ## Workflow Stage: Review Gate
-- [ ] REV-01 구조 / 보안 / 품질 리뷰 — Scope: [릴리즈 범위 / 대상 Task ID]
-- [ ] REV-02 리뷰 반영 확인 — Scope: [릴리즈 범위 / 대상 Task ID]
+- [ ] REV-EXAMPLE-01 구조 / 보안 / 품질 리뷰 — Scope: [릴리즈 범위 / 대상 Task ID]
+- [ ] REV-EXAMPLE-02 리뷰 반영 확인 — Scope: [릴리즈 범위 / 대상 Task ID]
 
 ## Workflow Stage: Deployment
-- [ ] REL-01 배포 전 사전 점검 — Scope: [환경 / 버전 / 커밋 범위]
-- [ ] REL-02 배포 실행 — Scope: [환경 / 명령 / 배포 대상]
-- [ ] REL-03 배포 결과 기록 — Scope: `DEPLOYMENT_PLAN.md`, `CURRENT_STATE.md`
+- [ ] REL-EXAMPLE-01 배포 전 사전 점검 — Scope: [환경 / 버전 / 커밋 범위]
+- [ ] REL-EXAMPLE-02 배포 실행 — Scope: [환경 / 명령 / 배포 대상]
+- [ ] REL-EXAMPLE-03 배포 결과 기록 — Scope: `DEPLOYMENT_PLAN.md`, `CURRENT_STATE.md`
 
 ## Workflow Stage: Documentation and Closeout
-- [ ] DOC-01 day_wrap_up 또는 같은 버전 내 문서 정리 준비 — Scope: `CURRENT_STATE.md`, `TASK_LIST.md`, 관련 아티팩트
-- [ ] DOC-02 version_closeout / Documenter 정리 — Scope: archive, `CURRENT_STATE.md`, `HANDOFF_ARCHIVE.md`
+- [ ] DOC-EXAMPLE-01 day_wrap_up 또는 같은 버전 내 문서 정리 준비 — Scope: `CURRENT_STATE.md`, `TASK_LIST.md`, 관련 아티팩트
+- [ ] DOC-EXAMPLE-02 version_closeout / Documenter 정리 — Scope: archive, `CURRENT_STATE.md`, `HANDOFF_ARCHIVE.md`
 
 ## Blockers
 - [없으면 비워둠]

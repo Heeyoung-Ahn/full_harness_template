@@ -72,7 +72,7 @@ placeholder 금지 예시:
 
 ### Step 6: Pre-Write Refresh와 Handoff
 - `REQUIREMENTS.md`, `ARCHITECTURE_GUIDE.md`, `IMPLEMENTATION_PLAN.md`, `TASK_LIST.md`, `CURRENT_STATE.md`를 갱신하기 직전에 다시 읽어 충돌이 없는지 확인합니다.
-- `TASK_LIST.md` 상태와 lock을 정리합니다.
+- `TASK_LIST.md` 상태와 lock을 정리합니다. Codex sub-agent를 썼다면 `Session`, `Branch`, `Worktree` 정보를 lock row와 handoff에 남깁니다.
 - `CURRENT_STATE.md`의 `Snapshot`, `Next Recommended Agent`, `Must Read Next`, `Active Scope`, `Task Pointers`, `Open Decisions / Blockers`, `Latest Handoff Summary`를 최신화합니다.
 - `Snapshot`에는 `Requirements Status`, `Architecture Status`, `Plan Status`, `Last Synced From Task / Handoff`, `Sync Checked At`를 채웁니다.
 - `## Handoff Log`에는 `workspace.md`의 표준 양식으로 기록합니다.
