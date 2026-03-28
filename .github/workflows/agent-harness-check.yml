@@ -1,0 +1,20 @@
+name: agent-harness-check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  harness-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run harness checks
+        run: python scripts/run_harness_checks.py --phase all --mode day_wrap_up

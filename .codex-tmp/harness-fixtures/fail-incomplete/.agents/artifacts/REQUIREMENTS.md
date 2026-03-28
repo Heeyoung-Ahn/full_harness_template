@@ -1,0 +1,80 @@
+﻿---
+artifact_kind: REQUIREMENTS
+template_mode: false
+status: Draft
+approved_by: ""
+approved_at: ""
+---
+
+# Requirements
+
+> Planner媛 ?ъ슜?먯? ?④퍡 ?묒꽦?섎뒗 理쒖긽???쒗뭹 怨꾩빟?쒖엯?덈떎.  
+> 援ъ“, 援ы쁽, ?뚯뒪?? 由щ럭, 諛고룷??紐⑤몢 ??臾몄꽌瑜?湲곗??쇰줈 ?먮떒?⑸땲??
+
+## Quick Read
+- ?대쾲 臾몄꽌???듭떖 紐⑺몴:
+- ?대쾲 踰꾩쟾??瑗??꾩슂??寃곌낵:
+- ?대쾲 踰꾩쟾?먯꽌 ?섏? ?딆쓣 寃?
+- ?ъ슜?먭? 理쒖쥌 ?뱀씤??踰붿쐞:
+- ?꾩옱 ?⑥븘 ?덈뒗 ??吏덈Ц:
+- ?ㅼ쓬 ??븷??瑗??쎌뼱?????ъ씤??
+
+## Status
+- Document Status: Draft / Needs User Answers / Ready for Approval / Approved
+- Owner: Planner
+- Last Updated At: [YYYY-MM-DD HH:MM]
+- Last Approved By: [User]
+- Last Approved At: [YYYY-MM-DD HH:MM]
+
+## Open Questions
+- [鍮꾩뼱 ?덉쑝硫?`?놁쓬`]
+
+## Changelog
+- [YYYY-MM-DD] Planner: initial draft
+
+## Product Goal
+- ???꾨줈?앺듃媛 ?닿껐?섎젮??臾몄젣:
+- 理쒖쥌 ?ъ슜??
+- ?깃났 湲곗?:
+
+## In Scope
+- [湲곕뒫/?꾨찓??踰붿쐞 ?묒꽦]
+
+## Out of Scope
+- [?대쾲 踰꾩쟾?먯꽌 ?섏? ?딆쓣 寃??묒꽦]
+
+## Functional Requirements
+
+| ID | Requirement | Priority | Acceptance Criteria |
+|---|---|---|---|
+| FR-01 | [?붽뎄?ы빆] | High | [?대뼡 ?곹깭媛 ?섎㈃ 異⑹”?몄?] |
+| FR-02 | [?붽뎄?ы빆] | Medium | [?대뼡 ?곹깭媛 ?섎㈃ 異⑹”?몄?] |
+
+## Non-Functional Requirements
+
+| ID | Requirement | Priority | Acceptance Criteria |
+|---|---|---|---|
+| NFR-01 | [?깅뒫/蹂댁븞/媛?⑹꽦/?묎렐???? | High | [痢≪젙 湲곗? ?먮뒗 議곌굔] |
+| NFR-02 | [?깅뒫/蹂댁븞/媛?⑹꽦/?묎렐???? | Medium | [痢≪젙 湲곗? ?먮뒗 議곌굔] |
+
+## Constraints
+- 湲곗닠 ?쒖빟:
+- ?댁쁺 ?쒖빟:
+- ?쇱젙 ?쒖빟:
+- 踰뺣Т/蹂댁븞/?뚮옯???쒖빟:
+
+## Dependencies
+- ?몃? ?쒕퉬??
+- ?대? ?쒖뒪??
+- ?몄쬆/諛고룷/?명봽???섏〈??
+
+## Assumptions
+- [?꾩옱 媛??
+
+## Pending Change Requests
+- [?뱀씤 ???붽뎄?ы빆 蹂寃??꾨낫]
+
+## Approval History
+- [YYYY-MM-DD HH:MM] [User]: Draft reviewed
+- [YYYY-MM-DD HH:MM] [User]: Approved for architecture planning
+
